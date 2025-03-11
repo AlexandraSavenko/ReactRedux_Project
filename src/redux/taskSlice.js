@@ -11,12 +11,13 @@ const slice = createSlice({
         builder
         .addCase(fetchTasks.pending, (state) => {
             state.loading = true;
+            state.error = false;
         })  //link to the fabric is replaced with 'tasks/getall/pending'
         .addCase(fetchTasks.fulfilled, (state, action) => {
             state.items = action.payload;
             state.loading = false
         })
-        .addCase(fetchTasks.rejected, (state, action) => {})
+        .addCase(fetchTasks.rejected, (state) => state.error = true)
 
 
     }
