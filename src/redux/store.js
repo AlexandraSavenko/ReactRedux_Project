@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import balanceReducer from "./balanceReducer";
 import langReducer from "./langReducer";
 import notesReducer from './notesReducer'
+import taskReducer from './taskSlice'
 
 
 
@@ -42,6 +43,7 @@ export const store = configureStore({
     reducer: {lang: persistedLocaleReducer,
         balance: persistedBalanceReducer,
         notes: persistedNotesReducer,
+        tasks: taskReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
