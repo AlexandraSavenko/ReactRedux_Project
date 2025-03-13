@@ -21,10 +21,17 @@ useEffect(()=> {
     <div>
       <LanguageSwitch/>
       <h1>{`${local === 'eng' ? 'Hello' : local === 'ukr' ? 'Привіт' : 'Bon jour'} React + Redux`}</h1>
-      <Balance/>
+
+      <Balance/> 
+      <div className='listsWrap'>
+      <div>
       <Notes/>
+      </div>
+      <div>
       {loading && <Loader/>}
       <TaskList/>
+      </div>
+      </div>
     </div>
   )
 }

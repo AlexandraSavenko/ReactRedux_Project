@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTasks } from "./taskOps";
+import { addTasks, fetchTasks } from "./taskOps";
 
 const slice = createSlice({
     name: 'tasks',
@@ -17,7 +17,15 @@ const slice = createSlice({
             state.items = action.payload;
             state.loading = false
         })
-        .addCase(fetchTasks.rejected, (state) => state.error = true)
+        .addCase(fetchTasks.rejected, (state) => {
+            state.error = true;
+        state.loading = false})
+        .addCase(addTasks.pending, state => {
+            state.loading = true
+        }).addCase(addTasks.fulfilled, (state, action) => {
+            state.loading = false
+            state.items.push(action.payload)
+        })
 
 
     }
